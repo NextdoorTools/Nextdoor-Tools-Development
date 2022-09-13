@@ -24,6 +24,7 @@ $elementSpacing: lines(0.5);
 
 .header-wrapper {
   @include wrapper(0);
+  max-width: 75em;
 }
 
 .header-left {

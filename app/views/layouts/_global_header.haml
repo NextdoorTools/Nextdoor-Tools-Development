@@ -1,10 +1,8 @@
 -# Hide header in map view if mobile
-%header.header
+%header.header.custom_header
   .header-wrapper
-    .header-right.header-padding.visible-tablet
-      = link_to t("homepage.index.post_new_listing"), new_listing_path, :class => "new-listing-link", :id => "new-listing-link"
 
-    .header-right.visible-tablet
+    .header-right.visible-tablet.hidden
       #header-menu-desktop-anchor.header-menu-container.toggle.hidden{data: {toggle: '#header-menu-toggle-menu', 'toggle-position' => 'absolute'}}
 
     - if logged_in
@@ -24,14 +22,16 @@
           - locale_change_links.each do |locale_change_link|
             %a{href: locale_change_link[:url]}
               = locale_change_link[:title]
-
+    
     - unless logged_in
       .header-right
-        = link_to login_path, class: "header-text-link header-hover", id: "header-login-link" do
-          = t("header.login")
-      .header-right
-        = link_to sign_up_path, class: "header-text-link header-hover" do
+        = link_to sign_up_path, class: "header-text-link header-hover right_login" do
           = t("header.signup")
+      .header-right
+        = link_to login_path, class: "header-text-link header-hover left_login", id: "header-login-link" do
+          = t("header.login")
+    .header-right.header-padding.visible-tablet
+      = link_to t("homepage.index.post_new_listing"), new_listing_path, :class => "new-listing-link", :id => "new-listing-link"
 
     .header-left.hidden-tablet
       .header-menu-container.toggle.hidden{data: {toggle: '#header-menu-toggle-menu', 'toggle-position' => 'absolute'}}
@@ -59,3 +59,5 @@
         - else
           %span.header-wide-logo-text.visible-tablet
             = @current_community.name(I18n.locale)
+    .header-left.header-logo-container.left_searchbar
+      = render partial: "homepage/search_bar"

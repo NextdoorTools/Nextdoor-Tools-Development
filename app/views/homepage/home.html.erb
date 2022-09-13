@@ -1,0 +1,37 @@
+<div class="categories_section">
+	<div class="category_heading">Top Categories</div>
+	<div class="grid_items">
+		<% @main_categories.each do |category| %>
+			<div class="column-4">
+				<div class="category_frame">
+					<div class="cat-image">
+						<%= image_tag 'image2', class: '' %>
+					</div>
+ 
+					<div class="text_content"><%= link_to @category_display_names[category.id],search_path(search_params.merge({category: category}))%>
+						<%= image_tag 'right_arrow.png' %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="col-12 low_content">
+	<div class="toolkit_section_hero">
+		<div class="hero_content">
+			Nextdoor Tools is a platform that allows you to search for the right tool, rent it your neighbours. It's quick and  easy. Nextdoor Tools gives people access to high-quality tools they need at a time when they need them most - without having to buy their or going to far.
+		</div>
+	</div>
+</div>
+
+<div class="city_browse">
+	<div class="header_text">Borrow tools across Australia</div>
+	<div class="grid_cities">
+		<% ["Sydney", "Hobart", "Melbourne", "Gold Coast", "Canberra" , "Perth", "Brisbane", "Cairns", "Adelaide"].each do |city_name| %>
+			<%= link_to '' do %>
+				<div class="city_1"><div class="text_content"><%= city_name %></div></div>
+			<% end %>
+		<% end %>
+	</div>
+</div>

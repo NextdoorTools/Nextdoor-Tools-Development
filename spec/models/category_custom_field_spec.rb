@@ -1,4 +1,4 @@
-# == Schema Information
+						# == Schema Information
 #
 # Table name: category_custom_fields
 #

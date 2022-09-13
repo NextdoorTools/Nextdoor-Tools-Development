@@ -1,19 +1,59 @@
-- if @custom_footer.theme_logo?
-  = render 'layouts/footer/theme_logo'
+- if false
+  - if @custom_footer.theme_logo?
+    = render 'layouts/footer/theme_logo'
+  - else
+    %footer{:class => "footer__container--#{@custom_footer.theme}"}
+      .footer__content
+        %div{:class => "footer__links-container#{@custom_footer.container_modifier}"}
+          - if @custom_footer.links?
+            %ul.footer__link-list
+              - @custom_footer.links.each do |link|
+                %li.footer__link-list-item
+                  %a.footer__link{:href => link.url}= link.title
+          - if @custom_footer.social?
+            .footer__social-media
+              - @custom_footer.social.each do |social|
+                %a.footer__social-media-link{:href => social.url, :rel => "noreferrer", :target => "_blank"}
+                  = render 'layouts/footer/social_icons', social_service: social.provider
+        %hr.footer__separator/
+        .footer__copyrights--markdown
+          = markdown(@custom_footer.copyright)
 - else
-  %footer{:class => "footer__container--#{@custom_footer.theme}"}
-    .footer__content
-      %div{:class => "footer__links-container#{@custom_footer.container_modifier}"}
-        - if @custom_footer.links?
-          %ul.footer__link-list
-            - @custom_footer.links.each do |link|
-              %li.footer__link-list-item
-                %a.footer__link{:href => link.url}= link.title
-        - if @custom_footer.social?
-          .footer__social-media
-            - @custom_footer.social.each do |social|
-              %a.footer__social-media-link{:href => social.url, :rel => "noreferrer", :target => "_blank"}
-                = render 'layouts/footer/social_icons', social_service: social.provider
-      %hr.footer__separator/
-      .footer__copyrights--markdown
-        = markdown(@custom_footer.copyright)
+  .custom_footer
+    .footer_content
+      .logo
+        = image_tag 'logo_nextdoor.png'
+      .categories
+        .heading
+          Tools Categories
+        - Category.all.each do |category|
+          .category_link
+            = category.url
+      .quick_links
+        .link_head
+          Quick Links
+        .link1
+          Link1
+        .link1
+          Link2
+        .link1
+          Link3
+      .social_contacts
+        .social_links
+          = image_tag 'insta.png', class: 'insta_icon'
+          = image_tag 'youtibe.png', class: 'insta_icon'
+          = image_tag 'facebook.png', class: 'insta_icon'
+          = image_tag 'twitter.png', class: 'insta_icon'
+        .phone_contact
+          = image_tag 'phone.png'
+          .contact
+            + 19001221321
+        .phone_contact
+          = image_tag 'email.png', class: 'email'
+          .contact
+            = mail_to 'Info@NextdoorTools.com'
+        .subscribe_content
+          = text_field_tag 'subscribe', '', placeholder: 'Email address', class: 'subscribe_text'
+          = button_tag 'Subscribe', class: 'subscribe_button'
+    .center_contant_last
+      @NextdoorTools 2022. All Rights Reserved

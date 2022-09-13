@@ -31,8 +31,116 @@ a, input, button {
   --------------------------
 */
 
+@font-face {
+  font-family: 'Inter';
+  src: asset-url('Inter-Thin.ttf');
+  font-weight: 100;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: asset-url('Inter-ExtraLight.ttf');
+  font-weight:normal;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: asset-url('Inter-Regular.ttf');
+  font-weight: 400;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: asset-url('Inter-SemiBold.ttf');
+  font-weight: 600;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: asset-url('Inter-Bold.ttf');
+  font-weight: 900;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: asset-url('NotoSans-Thin.ttf');
+  font-weight: 100;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: asset-url('NotoSans-ExtraLight.ttf');
+  font-weight:normal;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: asset-url('NotoSans-Regular.ttf');
+  font-weight: 400;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: asset-url('NotoSans-SemiBold.ttf');
+  font-weight: 600;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: asset-url('NotoSans-Bold.ttf');
+  font-weight: 900;
+  font-style:normal; 
+}
+
+
+
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Poppins-Thin.ttf');
+  font-weight: 100;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Poppins-ExtraLight.ttf');
+  font-weight:normal;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Poppins-Regular.ttf');
+  font-weight: 400;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Poppins-SemiBold.ttf');
+  font-weight: 600;
+  font-style:normal; 
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Poppins-Bold.ttf');
+  font-weight: 900;
+  font-style:normal; 
+}
+
 body {
-  @include source-sans-pro;
+  //@include source-sans-pro;
+  font-family: Inter;
   @include normal-type;
 
   @include media(tiny-mobile) {
@@ -42,9 +150,9 @@ body {
 }
 
 .page-content {
-  padding-bottom: lines(3);
-  padding-top: lines(0.5);
-
+  //padding-bottom: lines(3);
+  //padding-top: lines(0.5);
+  padding-top: 0px !important;
   &.no-cover-photo {
     padding-top: lines(0.5);
   }
