@@ -1,37 +1,85 @@
-<div class="categories_section">
-	<div class="category_heading">Top Categories</div>
-	<div class="grid_items">
-		<% @main_categories.each do |category| %>
-			<div class="column-4">
-				<div class="category_frame">
-					<div class="cat-image">
-						<%= image_tag 'image2', class: '' %>
-					</div>
- 
-					<div class="text_content"><%= link_to @category_display_names[category.id],search_path(search_params.merge({category: category}))%>
-						<%= image_tag 'right_arrow.png' %>
-					</div>
-				</div>
-			</div>
-		<% end %>
-	</div>
+<div class="main_container">
+  <div class="hero_section_row">
+    <div class="left_data">
+      <div class="contain_data">
+        <div class="headline">Nextdoor Tools</div>
+        <% if @current_community.show_slogan? %>
+          <div class="semi-headline"><%= community_slogan.html_safe %></div>
+        <% end %>
+        <% if @current_community.show_description? %>
+          <div class="description"><%= community_description.html_safe %></div>
+        <% end %>
+        <form action="/s" method="get" class="search_bar">
+          <div class="input_search">
+            <%= text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>
+          </div>
+          <div class="search_icon">
+            <button class="action-button" id="search-button" type="submit"><%= image_tag 'black_search.png', class: '' %></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="right_data">
+      <%= image_tag 'right_image.png' %>
+    </div>
+  </div>
 </div>
 
-<div class="col-12 low_content">
-	<div class="toolkit_section_hero">
-		<div class="hero_content">
-			Nextdoor Tools is a platform that allows you to search for the right tool, rent it your neighbours. It's quick and  easy. Nextdoor Tools gives people access to high-quality tools they need at a time when they need them most - without having to buy their or going to far.
-		</div>
-	</div>
+<div class="home_wrapper">
+  <div class="categories_section">
+    <div class="category_heading">Top Categories</div>
+    <div class="grid_items">
+      <% @main_categories.each do |category| %>
+        <div class="column-4">
+          <%= link_to search_path(category: category.url), class: 'category_frame' do %>
+            <div class="cat-image">
+              <%= image_tag 'image2', class: '' %>
+            </div>
+            <div class="text_content"><%= @category_display_names[category.id] %>
+              <%= image_tag 'right_arrow.png' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-12 low_content">
+    <div class="toolkit_section_hero">
+      <div class="hero_content">
+        Nextdoor Tools is a platform that allows you to search for the right tool, rent it your neighbours. It's quick and  easy. Nextdoor Tools gives people access to high-quality tools they need at a time when they need them most - without having to buy their or going to far.
+      </div>
+    </div>
+  </div>
+
+  <div class="city_browse">
+    <div class="header_text">Borrow tools across Australia</div>
+    <div class="grid_cities">
+      <% ["Sydney", "Hobart", "Melbourne", "Gold Coast", "Canberra" , "Perth", "Brisbane", "Cairns", "Adelaide"].each do |city_name| %>
+        <%= link_to '' do %>
+          <div class="city_1"><div class="text_content"><%= city_name %></div></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="city_browse">
-	<div class="header_text">Borrow tools across Australia</div>
-	<div class="grid_cities">
-		<% ["Sydney", "Hobart", "Melbourne", "Gold Coast", "Canberra" , "Perth", "Brisbane", "Cairns", "Adelaide"].each do |city_name| %>
-			<%= link_to '' do %>
-				<div class="city_1"><div class="text_content"><%= city_name %></div></div>
-			<% end %>
-		<% end %>
-	</div>
+<div class="tools_rent_section">
+  <div class="both_content">
+    <div class="lefttext-area">
+      <div class="content_header_text">Let your tools not rust and work for you</div>
+      <div class="bottom_icon text-center">
+        <%= image_tag 'red_vector.png' %>
+      </div>
+      <div class="bottom_small_text">Make money from hiring out your tools with Nextdoor Tools!</div>
+      <%= link_to 'Rent Your Tools', new_listing_path, class: 'rent_button button' %>
+    </div>
+    <%= image_tag 'work.png', alt: 'img', class: 'work_img' %>
+  </div>
+</div>
+
+<div class="home_wrapper">
+  <div class="community_content">
+    <div class="header_text_community">Nextdoor is making communities stronger by bringing neighbours together online with one goal: make life easier for each other! </div>
+  </div>
 </div>

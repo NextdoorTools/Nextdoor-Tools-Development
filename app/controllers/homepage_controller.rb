@@ -14,14 +14,14 @@ class HomepageController < ApplicationController
     @category_display_names = category_display_names(@current_community, @categories)
     filter_params = {}
 
-    m_selected_category = Maybe(@current_community.categories.find_by_url_or_id(params[:category]))
-    filter_params[:categories] = m_selected_category.own_and_subcategory_ids.or_nil
-    selected_category = m_selected_category.or_nil
-    relevant_filters = select_relevant_filters(m_selected_category.own_and_subcategory_ids.or_nil)
-    relevant_search_fields = parse_relevant_search_fields(params, relevant_filters)
-    locals = {
-      search_params: CustomFieldSearchParams.remove_irrelevant_search_params(params, relevant_search_fields)
-    }
+    #m_selected_category = Maybe(@current_community.categories.find_by_url_or_id(params[:category]))
+    #filter_params[:categories] = m_selected_category.own_and_subcategory_ids.or_nil
+    #selected_category = m_selected_category.or_nil
+    #relevant_filters = select_relevant_filters(m_selected_category.own_and_subcategory_ids.or_nil)
+    #relevant_search_fields = parse_relevant_search_fields(params, relevant_filters)
+    # locals = {
+    #   search_params: CustomFieldSearchParams.remove_irrelevant_search_params(params, relevant_search_fields)
+    # }
   end
 
   def index
