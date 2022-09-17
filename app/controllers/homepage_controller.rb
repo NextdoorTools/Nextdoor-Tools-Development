@@ -12,6 +12,7 @@ class HomepageController < ApplicationController
     @categories = @current_community.categories.includes(:children)
     @main_categories = @categories.select { |c| c.parent_id == nil }
     @category_display_names = category_display_names(@current_community, @categories)
+<<<<<<< HEAD
     # filter_params = {}
 
     # m_selected_category = Maybe(@current_community.categories.find_by_url_or_id(params[:category]))
@@ -19,6 +20,15 @@ class HomepageController < ApplicationController
     # selected_category = m_selected_category.or_nil
     # relevant_filters = select_relevant_filters(m_selected_category.own_and_subcategory_ids.or_nil)
     # relevant_search_fields = parse_relevant_search_fields(params, relevant_filters)
+=======
+    filter_params = {}
+
+    #m_selected_category = Maybe(@current_community.categories.find_by_url_or_id(params[:category]))
+    #filter_params[:categories] = m_selected_category.own_and_subcategory_ids.or_nil
+    #selected_category = m_selected_category.or_nil
+    #relevant_filters = select_relevant_filters(m_selected_category.own_and_subcategory_ids.or_nil)
+    #relevant_search_fields = parse_relevant_search_fields(params, relevant_filters)
+>>>>>>> 4e5fd64652945a568756faecc5279067008cdaad
     # locals = {
     #   search_params: CustomFieldSearchParams.remove_irrelevant_search_params(params, relevant_search_fields)
     # }

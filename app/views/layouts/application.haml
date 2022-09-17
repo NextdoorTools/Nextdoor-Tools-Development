@@ -8,7 +8,7 @@
     = prepend_render_rails_context("")
 
     - is_homepage = params[:controller] == "homepage" && params[:action] == "index"
-    - is_landingpage = params[:controller] == "homepage" && params[:action] == "home"
+    - is_landing_page = controller_name == 'homepage' && action_name == 'home'
     %noscript
       .noscript-padding
         -# Noscript content will be positioned here
@@ -38,69 +38,41 @@
       - else
         = render partial: "layouts/expiration_notice", locals: {contact_owner_link: new_user_feedback_path}
 
-    - content_for(:page_content) do
-      - if content_for?(:banner_warning)
-        %section.banner.banner--warning
-          .banner--title-wrapper
-            .banner--title
-              = yield :banner_warning
-      %section.marketplace-lander.hidden
-        - if @big_cover_photo
-          .coverimage
-            %figure.marketplace-cover.fluidratio
-              .lander-content.marketplace-lander-content
-                = yield :title_header
-        - elsif !(is_homepage && FeatureFlagHelper.feature_enabled?(:topbar_v1))
-          .coverimage
-            %figure.marketplace-cover-small.fluidratio
-            .coverimage-fade{:class => yield(:coverfade_class)}
-              %figure.marketplace-cover-small-fade.fluidratio
-          .title-container
-            .title-header-wrapper
-              .marketplace-title-header
-                = yield :title_header
+    - if is_landing_page
+      = yield
+    - else
+      - content_for(:page_content) do
+        - if content_for?(:banner_warning)
+          %section.banner.banner--warning
+            .banner--title-wrapper
+              .banner--title
+                = yield :banner_warning
+        %section.marketplace-lander
+          - if @big_cover_photo
+            .coverimage
+              %figure.marketplace-cover.fluidratio
+                .lander-content.marketplace-lander-content
+                  = yield :title_header
+          - elsif !(is_homepage && FeatureFlagHelper.feature_enabled?(:topbar_v1))
+            .coverimage
+              %figure.marketplace-cover-small.fluidratio
+              .coverimage-fade{:class => yield(:coverfade_class)}
+                %figure.marketplace-cover-small-fade.fluidratio
+            .title-container
+              .title-header-wrapper
+                .marketplace-title-header
+                  = yield :title_header
 
-      %article.page-content{class: is_homepage && !@big_cover_photo ? 'no-cover-photo' : ''}
-        - if is_landingpage
-          .main_container
-            .col-12
-              .col-6
-                .left_data
-                  .contain_data
-                    .headline Nextdoor Tools
-                    .semi-headline Rent Out Your Unused Tools and Make Extra Cash
-                    .description Nextdoor Tools is the perfect solution for people who need to borrow tools or want to make some extra money from their unused tools
-                    .search_bar
-                      .input_search
-                        = text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need")
-                      .search_icon
-                        %button#search-button.action-button{:type => "submit"}
-                          = image_tag 'black_search.png', class: ''
-              .col-6
-                .right_data
-        .wrapper
-          = render :partial => "layouts/notifications"
-          = yield
-          - if display_branding_info?
-            = render partial: "layouts/non_whitelabel_branding", locals: {link_to_sharetribe: "https://www.sharetribe.com/?utm_source=#{@current_community.ident}.sharetribe.com&utm_medium=referral&utm_campaign=nowl-footer"}
-        - if is_landingpage
-          .col-12.tools_rent_section
-            .both_content
-              .lefttext-area
-                .content_header_text Let your tools not rust and work for you
-                .bottom_icon.text-center= image_tag 'red_vector.png'
-                .bottom_small_text Make money from hiring out your tools with Nextdoor Tools!
-                = link_to 'Rent Your Tools', new_listing_path, class: 'rent_button button'
-              .right_content_image
-                .hexagon
-                //=# image_tag 'imagefix6.png'
-          .col-12.community_content
-            .header_text_community
-              Nextdoor is making communities stronger by bringing neighbours together online with one goal: make life easier for each other! 
-    -#
-      This is not pretty, but works.
-      On homepage, we want to wrap the whole page content (search bar and the "real" content) to a form, so that
-      pressing send from either search bar of filter list will send all the form fields
+        %article.page-content{class: is_homepage && !@big_cover_photo ? 'no-cover-photo' : ''}
+          .wrapper
+            = render :partial => "layouts/notifications"
+            = yield
+            - if display_branding_info?
+              = render partial: "layouts/non_whitelabel_branding", locals: {link_to_sharetribe: "https://www.sharetribe.com/?utm_source=#{@current_community.ident}.sharetribe.com&utm_medium=referral&utm_campaign=nowl-footer"}
+      -#
+        This is not pretty, but works.
+        On homepage, we want to wrap the whole page content (search bar and the "real" content) to a form, so that
+        pressing send from either search bar of filter list will send all the form fields
 
     - if is_homepage
       %form{method: "get", id: "homepage-filters"}
