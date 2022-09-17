@@ -22,6 +22,10 @@
       - options = [[t('admin2.categories.no_parent'), nil]] + top_level_categories.collect { |c| [c.display_name(I18n.locale), c.id] }
       = form.select :parent_id, options_for_select(options, category.parent_id), {}, class: %i[form-control]
 
+.form-group{style: 'margin-left:0;'}
+  = form.label :parent_id, t('admin2.categories.category_image')
+  %input.fileupload.form-control{type: "file", name: 'category[image]', multiple: "multiple"}
+
 .form-group#category-listing-shapes-container
   - if shapes.size > 1
     %label= t('admin2.categories.order_types')

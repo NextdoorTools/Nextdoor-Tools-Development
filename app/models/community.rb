@@ -209,11 +209,11 @@ class Community < ApplicationRecord
 
   has_attached_file :logo,
                     :styles => {
-                      :header => "192x192#",
-                      :header_icon => "40x40#",
-                      :header_icon_highres => "80x80#",
-                      :apple_touch => "152x152#",
-                      :original => "600x600>"
+                      :header => "81x52#",
+                      :header_icon => "81x52#",
+                      :header_icon_highres => "81x52#",
+                      :apple_touch => "81x52#",
+                      :original => "96x67>"
                     },
                     :convert_options => {
                       # iOS makes logo background black if there's an alpha channel
@@ -228,10 +228,10 @@ class Community < ApplicationRecord
 
   has_attached_file :wide_logo,
                     :styles => {
-                      :header => "168x40#",
+                      :header => "96x67#",
                       :paypal => "190x60>", # This logo is shown in PayPal checkout page. It has to be 190x60 according to PayPal docs.
-                      :header_highres => "336x80#",
-                      :original => "600x600>"
+                      :header_highres => "96x67#",
+                      :original => "96x67>"
                     },
                     :convert_options => {
                       # The size for paypal logo will be exactly 190x60. No cropping, instead the canvas is extended with white background

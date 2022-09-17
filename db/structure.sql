@@ -134,6 +134,10 @@ CREATE TABLE `categories` (
   `community_id` int(11) DEFAULT NULL,
   `sort_priority` int(11) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
+  `image_file_name` varchar(255) DEFAULT NULL,
+  `image_content_type` varchar(255) DEFAULT NULL,
+  `image_file_size` int(11) DEFAULT NULL,
+  `image_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_categories_on_community_id` (`community_id`) USING BTREE,
   KEY `index_categories_on_parent_id` (`parent_id`) USING BTREE,
@@ -2489,6 +2493,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20210108111345'),
 ('20210129114823'),
 ('20210517131520'),
-('20211124070123');
+('20211124070123'),
+('20220917191712');
 
 

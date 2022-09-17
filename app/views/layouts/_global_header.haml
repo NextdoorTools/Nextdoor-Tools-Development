@@ -31,7 +31,10 @@
         = link_to login_path, class: "header-text-link header-hover left_login", id: "header-login-link" do
           = t("header.login")
     .header-right.header-padding.visible-tablet
+      = link_to t("homepage.index.find_a_tool"), '/s', :class => "new-listing-link find_tool", :id => "new-listing-link"
+    .header-right.header-padding.visible-tablet
       = link_to t("homepage.index.post_new_listing"), new_listing_path, :class => "new-listing-link", :id => "new-listing-link"
+    
 
     .header-left.hidden-tablet
       .header-menu-container.toggle.hidden{data: {toggle: '#header-menu-toggle-menu', 'toggle-position' => 'absolute'}}

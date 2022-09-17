@@ -43,7 +43,8 @@ class ApplicationController < ActionController::Base
     :set_display_expiration_notice,
     :setup_intercom_user,
     :setup_custom_footer,
-    :disarm_custom_head_script
+    :disarm_custom_head_script,
+    :get_categories
 
   # This updates translation files from WTI on every page load. Only useful in translation test servers.
   before_action :fetch_translations if APP_CONFIG.update_translations_on_every_page_load == "true"
@@ -51,6 +52,12 @@ class ApplicationController < ActionController::Base
   helper_method :root, :logged_in?, :current_user?, :get_full_locale_name
 
   attr_reader :current_user
+
+  def get_categories
+    @categories = @current_community.categories.includes(:children)
+    @main_categories = @categories.select { |c| c.parent_id == nil }
+    @category_display_names = category_display_names(@current_community, @categories)
+  end
 
   def redirect_removed_locale
     if params[:locale] && Rails.application.config.REMOVED_LOCALES.include?(params[:locale])

@@ -227,13 +227,13 @@ $elementSpacing: lines(0.5);
     background-image: url(image-path($wide-logo-highres-url));
   }
 
-  width: em(168);
-  height: em(40);
+  width: 96px;
+  height: 67px;
 
   // Highres image
   background-repeat: no-repeat;
-  @include background-size(em(168) auto);
-
+  background-size: 100%;
+  margin-top: -10px;
   display: inline-block;
 }
 
@@ -244,12 +244,12 @@ $elementSpacing: lines(0.5);
     background-image: url(image-path($square-logo-highres-url));
   }
 
-  width: em(40);
-  height: em(40);
+  width: 81px;
+  height: 52px;
 
   // Highres image
   background-repeat: no-repeat;
-  @include background-size(em(40) auto);
+  background-size: 100%;
 
   display: inline-block;
 }

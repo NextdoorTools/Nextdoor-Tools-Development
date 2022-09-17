@@ -11,7 +11,7 @@
         <% end %>
         <form action="/s" method="get" class="search_bar">
           <div class="input_search">
-            <%= text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>
+            <%= text_field_tag "q", params[:q], :placeholder => "Enter Your Location to view tools" || t("homepage.index.what_do_you_need") %>
           </div>
           <div class="search_icon">
             <button class="action-button" id="search-button" type="submit"><%= image_tag 'black_search.png', class: '' %></button>
@@ -33,7 +33,7 @@
         <div class="column-4">
           <%= link_to search_path(category: category.url), class: 'category_frame' do %>
             <div class="cat-image">
-              <%= image_tag 'image2', class: '' %>
+              <%= image_tag category.image.url.include?('missing') ? 'image2.png' : category.image.url, class: '' %>
             </div>
             <div class="text_content"><%= @category_display_names[category.id] %>
               <%= image_tag 'right_arrow.png' %>

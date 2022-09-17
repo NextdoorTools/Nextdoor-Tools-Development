@@ -7,6 +7,13 @@
     - if unread_count > 0
       .mobile-badge{:class => get_badge_class(unread_count)}
         = unread_count
+  = link_to '/s' do
+    = icon_map_tag(icons, "list", ["icon-with-text"])
+    = t("homepage.index.find_a_tool")
+
+  = link_to new_listing_path do
+    = icon_map_tag(icons, "list", ["icon-with-text"])
+    = t("homepage.index.post_new_listing")
 
   = link_to profile_path do
     = icon_map_tag(icons, "user", ["icon-with-text"])

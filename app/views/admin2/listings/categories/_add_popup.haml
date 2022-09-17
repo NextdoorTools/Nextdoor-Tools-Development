@@ -2,7 +2,7 @@
 #categoriesAddModal.modal{'data-backdrop' => 'static', 'aria-hidden' => true, 'aria-labelledby' => 'categoriesAddModalLabel', role: :dialog, tabindex: '-1'}
   .modal-dialog.modal-lg{role: :document}
     .modal-content
-      = form_for [:admin2, :listings, category], class: %i[content-card-section-form] do |form|
+      = form_for [:admin2, :listings, category], class: %i[content-card-section-form], html: {multipart: true} do |form|
         .modal-header
           %h2#categoriesAddModalLabel.modal-title
             - if category.new_record?

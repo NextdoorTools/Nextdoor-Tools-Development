@@ -27,8 +27,9 @@
         .heading
           Tools Categories
         - Category.all.each do |category|
-          .category_link
-            = category.url
+          = link_to search_path(category: category.url) do
+            .category_link
+              = @category_display_names[category.id]
       .quick_links
         .link_head
           Quick Links

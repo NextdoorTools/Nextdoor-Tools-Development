@@ -574,6 +574,10 @@ $home-list-avatar-padding: lines(0.25);
   height: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
+  @media (max-width: 480px) {
+    padding-top: 15px;
+    padding-bottom: 30px;
+  }
   a#new-listing-link {
     margin: 0px;
     background: transparent;
@@ -593,7 +597,7 @@ $home-list-avatar-padding: lines(0.25);
 
 .header-left.header-logo-container.left_searchbar {
   max-width: 42em;
-  margin-left: 1.2em;
+  margin-left: 2.2em;
   width: 46%;
   border: 1px solid #AFB4B9;
   height: 40px;
@@ -1247,15 +1251,15 @@ $home-list-avatar-padding: lines(0.25);
         font-size: 1.044vw;
         line-height: 1.566vw;
         font-weight: 400;
-        margin: 0 0 0.835vw;
+        margin: 0 0 0.835vw !important;
 
         @media screen and (max-width: 992px) {
           font-size: 16px;
           line-height: 1.2;
-          margin: 0 0 10px;
+          margin: 0 0 10px !important;
 
           &:nth-last-of-type(1) {
-            margin: 0;
+            margin: 0 !important;
           }
         }
         &:nth-last-of-type(1) {
@@ -1457,4 +1461,8 @@ a#inbox-link {
     line-height: 1.2;
     margin: 0 0 40px;
   }
+}
+
+.header.header.custom_header a#new-listing-link.find_tool {
+  padding: 0px 0px;
 }
